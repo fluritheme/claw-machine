@@ -1,0 +1,80 @@
+{
+  "name": "@fluritheme/claw-machine",
+  "version": "0.1.0",
+  "description": "A playable 3D claw machine for websites. Real prize physics, six original Fluri collectibles, touch controls and custom prizes.",
+  "type": "module",
+  "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://fluri.xyz/",
+  "author": {
+    "name": "František Gejdoš",
+    "url": "https://fluri.xyz/founder/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fluritheme/claw-machine.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fluritheme/claw-machine/issues"
+  },
+  "keywords": [
+    "claw-machine",
+    "arcade",
+    "website-theme",
+    "threejs",
+    "physics",
+    "interactive",
+    "prizes",
+    "touch",
+    "typescript",
+    "fluri"
+  ],
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "assets",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "LICENSE-MIT-LEGACY",
+    "LICENSING.md",
+    "licensing.json",
+    "THIRD-PARTY-NOTICES.txt"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "packageManager": "pnpm@10.33.2",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5320",
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:browser": "playwright test",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "release:check": "node scripts/release-check.mjs",
+    "check": "pnpm typecheck && pnpm test && pnpm build && pnpm test:browser && pnpm format:check && pnpm release:check",
+    "prepublishOnly": "node scripts/check-licensing.mjs && pnpm build && pnpm release:check"
+  },
+  "dependencies": {
+    "three": "0.187.0",
+    "cannon-es": "0.20.0"
+  },
+  "devDependencies": {
+    "@types/three": "0.187.0",
+    "@types/node": "26.6.6",
+    "@playwright/test": "1.64.1",
+    "prettier": "3.9.10",
+    "typescript": "6.0.3",
+    "vite": "8.3.6",
+    "vitest": "5.1.0"
+  }
+}
