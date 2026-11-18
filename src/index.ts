@@ -391,11 +391,11 @@ class Machine implements ClawController {
   private frame(t: number) {
     this.raf = 0;
     if (this.destroyed) return;
-    const elapsed = this.last ? Math.min(0.1, (t - this.last) / 1000) : 1 / 60;
+    const elapsed = this.last ? Math.min(0.25, (t - this.last) / 1000) : 1 / 60;
     this.last = t;
     this.frameTime += elapsed;
     if (this.frameTime >= 1 / this.config.maxFPS) {
-      const dt = Math.min(0.1, this.frameTime);
+      const dt = Math.min(0.25, this.frameTime);
       this.frameTime = 0;
       const mapping: Record<string, string> = {
         arrowleft: "left",

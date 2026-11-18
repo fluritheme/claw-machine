@@ -1,1 +1,80 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Claw Machine — Fluri Arcade</title><style>body{margin:0;background:#f6eedf;color:#28252b;font:16px Arial,sans-serif}main{max-width:1040px;margin:0 auto;padding:36px 24px 80px}header{display:flex;justify-content:space-between;align-items:center;margin-bottom:35px}header a{color:inherit}h1{font-size:clamp(40px,7vw,86px);letter-spacing:-.06em;line-height:1;margin:0 0 15px}p{color:#857261}#machine{margin-top:30px}footer{margin-top:30px;display:flex;gap:15px}footer button{border:1px solid #cdbda5;background:#fff4df;padding:12px 20px;border-radius:30px;cursor:pointer}a{color:inherit}</style></head><body><main><header><strong>fluri ✳ / ARCADE NO. 01</strong><a href="https://fluri.xyz/">A little more Fluri ↗</a></header><h1>Find your<br>little lucky thing.</h1><p>Six little friends. Real physics. One more go.</p><div id="machine"></div><footer><button id="reset">Restock & reset</button><button id="midnight">Midnight cabinet</button><button id="mint">Mint cabinet</button></footer><p>Arrow keys or WASD to aim. Space to grab. Drag the claw with your mouse, or hold the direction buttons on touch screens.</p></main><script type="module" src="/examples/demo.ts"></script></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Claw Machine — Fluri Arcade</title>
+    <style>
+      body {
+        margin: 0;
+        background: #f6eedf;
+        color: #28252b;
+        font:
+          16px Arial,
+          sans-serif;
+      }
+      main {
+        max-width: 1040px;
+        margin: 0 auto;
+        padding: 36px 24px 80px;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 35px;
+      }
+      header a {
+        color: inherit;
+      }
+      h1 {
+        font-size: clamp(40px, 7vw, 86px);
+        letter-spacing: -0.06em;
+        line-height: 1;
+        margin: 0 0 15px;
+      }
+      p {
+        color: #857261;
+      }
+      #machine {
+        margin-top: 30px;
+      }
+      footer {
+        margin-top: 30px;
+        display: flex;
+        gap: 15px;
+      }
+      footer button {
+        border: 1px solid #cdbda5;
+        background: #fff4df;
+        padding: 12px 20px;
+        border-radius: 30px;
+        cursor: pointer;
+      }
+      a {
+        color: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <strong>fluri ✳ / ARCADE NO. 01</strong
+        ><a href="https://fluri.xyz/">A little more Fluri ↗</a>
+      </header>
+      <h1>Find your<br />little lucky thing.</h1>
+      <p>Six little friends. Real physics. One more go.</p>
+      <div id="machine"></div>
+      <footer>
+        <button id="reset">Restock & reset</button
+        ><button id="midnight">Midnight cabinet</button
+        ><button id="mint">Mint cabinet</button>
+      </footer>
+      <p>
+        Arrow keys or WASD to aim. Space to grab. Drag the claw with your mouse,
+        or hold the direction buttons on touch screens.
+      </p>
+    </main>
+    <script type="module" src="/examples/demo.ts"></script>
+  </body>
+</html>

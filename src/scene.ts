@@ -19,6 +19,7 @@ export class CabinetScene {
   private textures = new Set<T.Texture>();
   private env: T.WebGLRenderTarget;
   private disposed = false;
+  private adapted = false;
   private accent: T.MeshStandardMaterial;
   private white: T.MeshStandardMaterial;
   private dark: T.MeshStandardMaterial;
@@ -704,7 +705,14 @@ export class CabinetScene {
       ).emissiveIntensity = motion
         ? 0.25 + (Math.sin(sim.time * 2 - i * 0.7) + 1) * 0.35
         : 0.35;
+    const started = performance.now();
     this.renderer.render(this.scene, this.camera);
+    if (!this.adapted && performance.now() - started > 80) {
+      this.adapted = true;
+      this.renderer.setPixelRatio(1);
+      this.renderer.shadowMap.enabled = false;
+      for (const material of this.materials) material.needsUpdate = true;
+    }
   }
   aimAt(clientX: number, clientY: number) {
     const rect = this.canvas.getBoundingClientRect(),

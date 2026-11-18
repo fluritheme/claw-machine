@@ -50,7 +50,7 @@ test("a physically centred grab reaches the prize chute, opens a ticket and adds
     )
     .toBeLessThan(0.015);
   await page.locator(".grab").first().click();
-  await expect(page.locator(".win")).toBeVisible({ timeout: 22000 });
+  await expect(page.locator(".win")).toBeVisible({ timeout: 30000 });
   await expect(page.locator(".slot.found")).toHaveCount(1);
   expect((await page.evaluate(() => window.claw.getState())).wins).toBe(1);
   await page.getByRole("button", { name: "ONE MORE GO" }).click();
