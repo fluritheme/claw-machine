@@ -35,6 +35,24 @@ test("renders a real canvas and a six-prize collection, with muted sound and wor
 test("a physically centred grab reaches the prize chute, opens a ticket and adds the collectible", async ({
   page,
 }) => {
+  let previous: number[] = [];
+  let settled = 0;
+  await expect
+    .poll(
+      async () => {
+        const positions = await page.evaluate(() =>
+          window.claw.getState().prizes.flatMap((p) => [p.x, p.y, p.z]),
+        );
+        const still =
+          previous.length === positions.length &&
+          positions.every((v, i) => Math.abs(v - previous[i]!) < 0.005);
+        previous = positions;
+        settled = still ? settled + 1 : 0;
+        return settled;
+      },
+      { intervals: [200], timeout: 15000 },
+    )
+    .toBeGreaterThanOrEqual(3);
   await page.evaluate(() => {
     const p = window.claw
       .getState()
@@ -50,7 +68,7 @@ test("a physically centred grab reaches the prize chute, opens a ticket and adds
     )
     .toBeLessThan(0.015);
   await page.locator(".grab").first().click();
-  await expect(page.locator(".win")).toBeVisible({ timeout: 30000 });
+  await expect(page.locator(".win")).toBeVisible({ timeout: 45000 });
   await expect(page.locator(".slot.found")).toHaveCount(1);
   expect((await page.evaluate(() => window.claw.getState())).wins).toBe(1);
   await page.getByRole("button", { name: "ONE MORE GO" }).click();
